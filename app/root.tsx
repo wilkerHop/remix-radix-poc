@@ -1,4 +1,6 @@
-import { cssBundleHref } from "@remix-run/css-bundle";
+import { Theme } from '@radix-ui/themes';
+import '@radix-ui/themes/styles.css';
+import { cssBundleHref } from '@remix-run/css-bundle';
 import {
   Links,
   LiveReload,
@@ -6,12 +8,12 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-} from "@remix-run/react";
-import { Analytics } from "@vercel/analytics/react";
-import type { LinksFunction } from "@vercel/remix";
+} from '@remix-run/react';
+import { Analytics } from '@vercel/analytics/react';
+import type { LinksFunction } from '@vercel/remix';
 
 export const links: LinksFunction = () => [
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+  ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []),
 ];
 
 export default function App() {
@@ -24,11 +26,13 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
-        <Analytics />
+        <Theme>
+          <Outlet />
+          <ScrollRestoration />
+          <Scripts />
+          <LiveReload />
+          <Analytics />
+        </Theme>
       </body>
     </html>
   );
