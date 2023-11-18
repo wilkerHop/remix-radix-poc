@@ -1,5 +1,6 @@
-import { Theme } from '@radix-ui/themes';
-import '@radix-ui/themes/styles.css';
+import { BookmarkIcon } from '@radix-ui/react-icons';
+import { Button, Theme } from '@radix-ui/themes';
+import radixcss from '@radix-ui/themes/styles.css';
 import { cssBundleHref } from '@remix-run/css-bundle';
 import {
   Links,
@@ -14,6 +15,7 @@ import type { LinksFunction } from '@vercel/remix';
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []),
+  { rel: 'stylesheet', href: radixcss },
 ];
 
 export default function App() {
@@ -32,6 +34,9 @@ export default function App() {
           <Scripts />
           <LiveReload />
           <Analytics />
+          <Button>
+            <BookmarkIcon width="16" height="16" /> Bookmark
+          </Button>
         </Theme>
       </body>
     </html>
